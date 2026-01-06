@@ -1,0 +1,9 @@
+[
+  { "name": "XS", "isActive": true },
+  { "name": "S", "isActive": true },
+  { "name": "M", "isActive": true },
+  { "name": "L", "isActive": true },
+  { "name": "XL", "isActive": true },
+  { "name": "XXL", "isActive": true },
+  { "name": "Free Size", "isActive": true }
+]

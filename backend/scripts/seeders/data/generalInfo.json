@@ -1,0 +1,17 @@
+{
+  "PrimaryLogo": "/uploads/logo/sapphire-logo.png",
+  "SecondaryLogo": "/uploads/logo/sapphire-logo-white.png",
+  "Favicon": "/uploads/favicon/favicon.ico",
+  "CompanyName": "Sapphire",
+  "PhoneNumber": ["+92 (0) 42 111-738-245"],
+  "CompanyEmail": ["wecare@sapphireonline.pk", "support@sapphireonline.pk"],
+  "ShortDescription": "SAPPHIRE is a premium fashion brand offering timeless design and modern sophistication. From unstitched fabrics to ready-to-wear collections, we bring you the finest quality clothing with unmatched comfort, fine detailing and effortless style.",
+  "CompanyAddress": "Sapphire Retail Limited, 25-A, Block C-II, Gulberg III, Lahore, Pakistan",
+  "GoogleMapLink": "https://maps.google.com/?q=Sapphire+Gulberg+Lahore",
+  "PlayStoreLink": "https://play.google.com/store/apps/details?id=com.sapphire.app",
+  "AppStoreLink": "https://apps.apple.com/pk/app/sapphire/id1234567890",
+  "TradeLicense": "TL-2024-001234",
+  "TINNumber": 1234567890,
+  "BINNumber": 9876543210,
+  "FooterCopyright": "© COPYRIGHT 2025 SAPPHIRE. All Rights Reserved."
+}

@@ -1,0 +1,30 @@
+[
+  {
+    "imgSrc": "https://pk.sapphireonline.pk/on/demandware.static/-/Sites-Sapphire-Library/default/dw1234abcd/images/homepage/winter-sale-banner.jpg",
+    "heading": "WINTER SALE",
+    "subHeading": "From wardrobe essentials to statement pieces and accessories for every occasion, shop your favourites at irresistible prices.",
+    "buttonText": "SHOP SALE",
+    "buttonLink": "/products?category=women"
+  },
+  {
+    "imgSrc": "https://pk.sapphireonline.pk/on/demandware.static/-/Sites-Sapphire-Library/default/dw5678efgh/images/homepage/rtw-banner.jpg",
+    "heading": "READY TO WEAR",
+    "subHeading": "From standout silhouettes to festive looks and everyday staples—style your favourites on a budget.",
+    "buttonText": "SHOP NOW",
+    "buttonLink": "/products?subCategory=ready-to-wear"
+  },
+  {
+    "imgSrc": "https://pk.sapphireonline.pk/on/demandware.static/-/Sites-Sapphire-Library/default/dw9012ijkl/images/homepage/50off-banner.jpg",
+    "heading": "FLAT 50% OFF",
+    "subHeading": "Ready to Wear collection now at flat 50% off. Limited time offer!",
+    "buttonText": "SHOP 50% OFF",
+    "buttonLink": "/products?flags=50-off"
+  },
+  {
+    "imgSrc": "https://pk.sapphireonline.pk/on/demandware.static/-/Sites-Sapphire-Library/default/dw3456mnop/images/homepage/new-arrivals.jpg",
+    "heading": "NEW ARRIVALS",
+    "subHeading": "Discover the latest additions to our collection. Fresh styles for the modern woman.",
+    "buttonText": "EXPLORE NEW IN",
+    "buttonLink": "/products?flags=new-arrival"
+  }
+]

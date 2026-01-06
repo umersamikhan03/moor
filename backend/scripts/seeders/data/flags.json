@@ -1,0 +1,10 @@
+[
+  { "name": "New Arrival", "position": 1, "isActive": true },
+  { "name": "50% OFF", "position": 2, "isActive": true },
+  { "name": "30% OFF", "position": 3, "isActive": true },
+  { "name": "70% OFF", "position": 4, "isActive": true },
+  { "name": "Best Seller", "position": 5, "isActive": true },
+  { "name": "Sold Out", "position": 6, "isActive": true },
+  { "name": "Online Exclusive", "position": 7, "isActive": true },
+  { "name": "Winter Sale", "position": 8, "isActive": true }
+]

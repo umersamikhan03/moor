@@ -1,0 +1,371 @@
+[
+  {
+    "name": "Embroidered Light Khaddar Shirt",
+    "productCode": "PRESTW25V526_999",
+    "shortDesc": "Straight Shirt, Fit: Slim Fit, Dyed With Embroidered Front Panel",
+    "longDesc": "Straight Shirt\nFit: Slim Fit\nDyed With Embroidered Front Panel, Dyed Back Panel, Round With Placket Neckline, Full Sleeves, Short Length\nColour: Black\nFabric: Light Khaddar",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["50% OFF", "Winter Sale"],
+    "finalPrice": 5590,
+    "finalDiscount": 2795,
+    "finalStock": 50,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw845da2ff/images/Dec25/8thDec25/PRESTW25V526_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw845da2ff/images/Dec25/8thDec25/PRESTW25V526_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw659c6c1f/images/Dec25/8thDec25/PRESTW25V526_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw6dde1052/images/Dec25/8thDec25/PRESTW25V526_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw5bcb1330/images/Dec25/8thDec25/PRESTW25V526_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["khaddar", "embroidered", "shirt", "black", "winter", "straight"],
+    "metaTitle": "Embroidered Light Khaddar Shirt - Sapphire",
+    "metaDescription": "Shop Embroidered Light Khaddar Shirt in Black color. Premium quality fabric with beautiful embroidery.",
+    "metaKeywords": ["khaddar shirt", "embroidered shirt", "women shirt", "winter wear"],
+    "variants": [
+      { "sizeName": "XS", "stock": 10, "price": 5590, "discount": 2795 },
+      { "sizeName": "S", "stock": 15, "price": 5590, "discount": 2795 },
+      { "sizeName": "M", "stock": 20, "price": 5590, "discount": 2795 },
+      { "sizeName": "L", "stock": 12, "price": 5590, "discount": 2795 },
+      { "sizeName": "XL", "stock": 8, "price": 5590, "discount": 2795 }
+    ]
+  },
+  {
+    "name": "Solid Bedford Shirt",
+    "productCode": "2STSDW25V554_999",
+    "shortDesc": "Drop Shoulder Shirt, Fit: Loose Fit, Dyed Front Panel",
+    "longDesc": "Drop Shoulder Shirt\nFit: Loose Fit\nDyed Front Panel, Dyed Back Panel, Collar With Slit Neckline, Full Sleeves, Short Length\nColour: Mustard\nFabric: Bedford",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 3990,
+    "finalDiscount": 1995,
+    "finalStock": 45,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2f57d03f/images/Dec25/8thDec25/2STSDW25V554_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2f57d03f/images/Dec25/8thDec25/2STSDW25V554_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw7a30d71d/images/Dec25/8thDec25/2STSDW25V554_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw0cfddb1b/images/Dec25/8thDec25/2STSDW25V554_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw8577dcfc/images/Dec25/8thDec25/2STSDW25V554_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["bedford", "solid", "shirt", "mustard", "winter", "drop shoulder"],
+    "metaTitle": "Solid Bedford Shirt - Sapphire",
+    "metaDescription": "Shop Solid Bedford Shirt in Mustard color. Drop shoulder design with loose fit.",
+    "metaKeywords": ["bedford shirt", "solid shirt", "women shirt", "winter wear"],
+    "variants": [
+      { "sizeName": "XS", "stock": 8, "price": 3990, "discount": 1995 },
+      { "sizeName": "S", "stock": 12, "price": 3990, "discount": 1995 },
+      { "sizeName": "M", "stock": 18, "price": 3990, "discount": 1995 },
+      { "sizeName": "L", "stock": 10, "price": 3990, "discount": 1995 },
+      { "sizeName": "XL", "stock": 6, "price": 3990, "discount": 1995 }
+    ]
+  },
+  {
+    "name": "Solid Khaddar Culottes",
+    "productCode": "2SPRW25V584T_999",
+    "shortDesc": "Culottes, Colour: Navy Blue, Fabric: Khaddar",
+    "longDesc": "Culottes\nColour: Navy Blue\nFabric: Khaddar\nPerfect for winter season with comfortable fit",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Bottoms",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 2590,
+    "finalDiscount": 1295,
+    "finalStock": 60,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw775bec78/images/Dec25/10thDec25/2SPRW25V584T_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw775bec78/images/Dec25/10thDec25/2SPRW25V584T_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2e83c164/images/Dec25/10thDec25/2SPRW25V584T_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2aff5d32/images/Dec25/10thDec25/2SPRW25V584T_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw3a47f4d5/images/Dec25/10thDec25/2SPRW25V584T_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["khaddar", "culottes", "bottoms", "navy blue", "winter"],
+    "metaTitle": "Solid Khaddar Culottes - Sapphire",
+    "metaDescription": "Shop Solid Khaddar Culottes in Navy Blue. Premium khaddar fabric for winter comfort.",
+    "metaKeywords": ["khaddar culottes", "bottoms", "women bottoms", "winter wear"],
+    "variants": [
+      { "sizeName": "XS", "stock": 12, "price": 2590, "discount": 1295 },
+      { "sizeName": "S", "stock": 15, "price": 2590, "discount": 1295 },
+      { "sizeName": "M", "stock": 20, "price": 2590, "discount": 1295 },
+      { "sizeName": "L", "stock": 15, "price": 2590, "discount": 1295 },
+      { "sizeName": "XL", "stock": 10, "price": 2590, "discount": 1295 }
+    ]
+  },
+  {
+    "name": "Solid Bedford Shalwar",
+    "productCode": "2SSDW25V554T_999",
+    "shortDesc": "Shalwar, Colour: Mustard, Fabric: Bedford",
+    "longDesc": "Shalwar\nColour: Mustard\nFabric: Bedford\nPerfect matching bottom for Bedford shirts",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Bottoms",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 3290,
+    "finalDiscount": 1645,
+    "finalStock": 40,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw302cff31/images/Dec25/8thDec25/2SSDW25V554T_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw302cff31/images/Dec25/8thDec25/2SSDW25V554T_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwf65e1d96/images/Dec25/8thDec25/2SSDW25V554T_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwf6ddf969/images/Dec25/8thDec25/2SSDW25V554T_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwe92e740e/images/Dec25/8thDec25/2SSDW25V554T_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["bedford", "shalwar", "mustard", "bottoms", "matching"],
+    "metaTitle": "Solid Bedford Shalwar - Sapphire",
+    "metaDescription": "Shop Solid Bedford Shalwar in Mustard. Premium bedford fabric for matching outfits.",
+    "metaKeywords": ["bedford shalwar", "women bottoms", "matching separates"],
+    "variants": [
+      { "sizeName": "XS", "stock": 8, "price": 3290, "discount": 1645 },
+      { "sizeName": "S", "stock": 10, "price": 3290, "discount": 1645 },
+      { "sizeName": "M", "stock": 15, "price": 3290, "discount": 1645 },
+      { "sizeName": "L", "stock": 12, "price": 3290, "discount": 1645 },
+      { "sizeName": "XL", "stock": 5, "price": 3290, "discount": 1645 }
+    ]
+  },
+  {
+    "name": "Printed Dobby Shalwar",
+    "productCode": "2STRW25V596T_999",
+    "shortDesc": "Shalwar, Colour: Black, Fabric: Dobby",
+    "longDesc": "Shalwar\nColour: Black\nFabric: Dobby\nPrinted design with comfortable fit for traditional wear",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Bottoms",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 2990,
+    "finalDiscount": 1495,
+    "finalStock": 40,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw3d0fcdf4/images/Dec25/8thDec25/2STRW25V596T_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw3d0fcdf4/images/Dec25/8thDec25/2STRW25V596T_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwca7a22cc/images/Dec25/8thDec25/2STRW25V596T_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw57abc77f/images/Dec25/8thDec25/2STRW25V596T_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwb8bd7124/images/Dec25/8thDec25/2STRW25V596T_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["dobby", "shalwar", "printed", "black", "traditional"],
+    "metaTitle": "Printed Dobby Shalwar - Sapphire",
+    "metaDescription": "Shop Printed Dobby Shalwar in Black. Premium dobby fabric with beautiful print.",
+    "metaKeywords": ["dobby shalwar", "printed shalwar", "women bottoms"],
+    "variants": [
+      { "sizeName": "XS", "stock": 8, "price": 2990, "discount": 1495 },
+      { "sizeName": "S", "stock": 12, "price": 2990, "discount": 1495 },
+      { "sizeName": "M", "stock": 15, "price": 2990, "discount": 1495 },
+      { "sizeName": "L", "stock": 10, "price": 2990, "discount": 1495 },
+      { "sizeName": "XL", "stock": 5, "price": 2990, "discount": 1495 }
+    ]
+  },
+  {
+    "name": "Printed Arabic Dobby Shirt",
+    "productCode": "2SRW25V596ST_999",
+    "shortDesc": "Straight Shirt, Fit: Slim Fit, Printed Front Panel",
+    "longDesc": "Straight Shirt\nFit: Slim Fit\nPrinted Front Panel, Printed Back Panel, Round With Slit Neckline, Full Sleeves, Short Length\nColour: Black\nFabric: Arabic Dobby",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 2990,
+    "finalDiscount": 1495,
+    "finalStock": 38,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw9c7cb797/images/Dec25/8thDec25/2SRW25V596ST_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw9c7cb797/images/Dec25/8thDec25/2SRW25V596ST_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwdaf3d1b0/images/Dec25/8thDec25/2SRW25V596ST_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwa11b9b98/images/Dec25/8thDec25/2SRW25V596ST_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwef6f9ac3/images/Dec25/8thDec25/2SRW25V596ST_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["arabic dobby", "printed", "shirt", "black", "straight"],
+    "metaTitle": "Printed Arabic Dobby Shirt - Sapphire",
+    "metaDescription": "Shop Printed Arabic Dobby Shirt in Black. Premium fabric with elegant print.",
+    "metaKeywords": ["arabic dobby shirt", "printed shirt", "women shirt"],
+    "variants": [
+      { "sizeName": "XS", "stock": 7, "price": 2990, "discount": 1495 },
+      { "sizeName": "S", "stock": 10, "price": 2990, "discount": 1495 },
+      { "sizeName": "M", "stock": 12, "price": 2990, "discount": 1495 },
+      { "sizeName": "L", "stock": 8, "price": 2990, "discount": 1495 },
+      { "sizeName": "XL", "stock": 5, "price": 2990, "discount": 1495 }
+    ]
+  },
+  {
+    "name": "Embroidered Jacquard Shirt",
+    "productCode": "TPVSLFW25V57_999",
+    "shortDesc": "Straight Shirt, Fit: Slim Fit, Dyed With Embroidered Front Panel",
+    "longDesc": "Straight Shirt\nFit: Slim Fit\nDyed With Embroidered Front Panel, Dyed Back Panel, Round With Slit Neckline, Full Sleeves, Short Length\nColour: Pink\nFabric: Self Jacquard Leno",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["50% OFF", "Sold Out"],
+    "finalPrice": 6990,
+    "finalDiscount": 3495,
+    "finalStock": 0,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwa08659a4/images/Nov25/12thNov25/TPVSLFW25V57_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwa08659a4/images/Nov25/12thNov25/TPVSLFW25V57_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dwcb1dd500/images/Nov25/12thNov25/TPVSLFW25V57_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw3565307e/images/Nov25/12thNov25/TPVSLFW25V57_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw3133d85d/images/Nov25/12thNov25/TPVSLFW25V57_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["jacquard", "embroidered", "pink", "straight shirt", "leno"],
+    "metaTitle": "Embroidered Jacquard Shirt - Sapphire",
+    "metaDescription": "Shop Embroidered Jacquard Shirt in Pink. Premium self jacquard leno fabric.",
+    "metaKeywords": ["jacquard shirt", "embroidered shirt", "women shirt"],
+    "variants": [
+      { "sizeName": "XS", "stock": 0, "price": 6990, "discount": 3495 },
+      { "sizeName": "S", "stock": 0, "price": 6990, "discount": 3495 },
+      { "sizeName": "M", "stock": 0, "price": 6990, "discount": 3495 },
+      { "sizeName": "L", "stock": 0, "price": 6990, "discount": 3495 },
+      { "sizeName": "XL", "stock": 0, "price": 6990, "discount": 3495 }
+    ]
+  },
+  {
+    "name": "Embroidered Tier Dress",
+    "productCode": "WTOPS25V4003_999",
+    "shortDesc": "Embroidered Tier Dress, Colour: White, Fabric: 100% Cotton",
+    "longDesc": "Embroidered Tier Dress\nColour: White\nFabric: 100% Cotton\nElegant tiered design with beautiful embroidery",
+    "categoryName": "Women",
+    "subCategoryName": "Western Wear",
+    "childCategoryName": "Western Dresses",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 9990,
+    "finalDiscount": 4995,
+    "finalStock": 30,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw49371084/images/Dec25/8thDec25/WOTW25V80064_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw49371084/images/Dec25/8thDec25/WOTW25V80064_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw07b6095b/images/Dec25/8thDec25/WOTW25V80064_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw36ddd07b/images/Dec25/8thDec25/WOTW25V80064_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dweead2577/images/Dec25/8thDec25/WOTW25V80064_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["tier dress", "embroidered", "white", "cotton", "western"],
+    "metaTitle": "Embroidered Tier Dress - Sapphire",
+    "metaDescription": "Shop Embroidered Tier Dress in White. 100% Cotton fabric with elegant tiered design.",
+    "metaKeywords": ["tier dress", "embroidered dress", "western wear", "cotton dress"],
+    "variants": [
+      { "sizeName": "XS", "stock": 6, "price": 9990, "discount": 4995 },
+      { "sizeName": "S", "stock": 8, "price": 9990, "discount": 4995 },
+      { "sizeName": "M", "stock": 10, "price": 9990, "discount": 4995 },
+      { "sizeName": "L", "stock": 8, "price": 9990, "discount": 4995 },
+      { "sizeName": "XL", "stock": 4, "price": 9990, "discount": 4995 }
+    ]
+  },
+  {
+    "name": "Sleeveless Quilted Puffer",
+    "productCode": "WOTW25V80064_999",
+    "shortDesc": "Sleeveless Quilted Puffer, Colour: Rust Orange",
+    "longDesc": "Sleeveless Quilted Puffer\nColour: Rust Orange\nFabric: 50% Polyurethane & 50% Polyester\nPerfect for layering in winter",
+    "categoryName": "Women",
+    "subCategoryName": "Western Wear",
+    "childCategoryName": "Western Dresses",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 7990,
+    "finalDiscount": 3995,
+    "finalStock": 25,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw49371084/images/Dec25/8thDec25/WOTW25V80064_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw49371084/images/Dec25/8thDec25/WOTW25V80064_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw07b6095b/images/Dec25/8thDec25/WOTW25V80064_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw36ddd07b/images/Dec25/8thDec25/WOTW25V80064_999_4.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dweead2577/images/Dec25/8thDec25/WOTW25V80064_999_5.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["puffer", "quilted", "rust", "sleeveless", "winter", "jacket"],
+    "metaTitle": "Sleeveless Quilted Puffer - Sapphire",
+    "metaDescription": "Shop Sleeveless Quilted Puffer in Rust Orange. Perfect winter layering piece.",
+    "metaKeywords": ["puffer jacket", "quilted", "western wear", "winter jacket"],
+    "variants": [
+      { "sizeName": "XS", "stock": 5, "price": 7990, "discount": 3995 },
+      { "sizeName": "S", "stock": 7, "price": 7990, "discount": 3995 },
+      { "sizeName": "M", "stock": 8, "price": 7990, "discount": 3995 },
+      { "sizeName": "L", "stock": 6, "price": 7990, "discount": 3995 },
+      { "sizeName": "XL", "stock": 4, "price": 7990, "discount": 3995 }
+    ]
+  },
+  {
+    "name": "Printed Khaddar Straight Shirt",
+    "productCode": "PRKW25V001_999",
+    "shortDesc": "Straight Shirt, Fit: Regular Fit, Printed Khaddar",
+    "longDesc": "Straight Shirt\nFit: Regular Fit\nPrinted Front Panel, Printed Back Panel\nColour: Maroon\nFabric: Khaddar",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["New Arrival", "Winter Sale"],
+    "finalPrice": 4590,
+    "finalDiscount": 2295,
+    "finalStock": 45,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw845da2ff/images/Dec25/8thDec25/PRESTW25V526_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw845da2ff/images/Dec25/8thDec25/PRESTW25V526_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw659c6c1f/images/Dec25/8thDec25/PRESTW25V526_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw6dde1052/images/Dec25/8thDec25/PRESTW25V526_999_4.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["khaddar", "printed", "shirt", "maroon", "winter", "straight"],
+    "metaTitle": "Printed Khaddar Straight Shirt - Sapphire",
+    "metaDescription": "Shop Printed Khaddar Straight Shirt in Maroon. Premium khaddar fabric.",
+    "metaKeywords": ["khaddar shirt", "printed shirt", "women shirt", "winter wear"],
+    "variants": [
+      { "sizeName": "XS", "stock": 9, "price": 4590, "discount": 2295 },
+      { "sizeName": "S", "stock": 12, "price": 4590, "discount": 2295 },
+      { "sizeName": "M", "stock": 15, "price": 4590, "discount": 2295 },
+      { "sizeName": "L", "stock": 10, "price": 4590, "discount": 2295 },
+      { "sizeName": "XL", "stock": 6, "price": 4590, "discount": 2295 }
+    ]
+  },
+  {
+    "name": "Embroidered Karandi A-Line Shirt",
+    "productCode": "EKAW25V002_999",
+    "shortDesc": "A-Line Shirt, Fit: Relaxed Fit, Embroidered Karandi",
+    "longDesc": "A-Line Shirt\nFit: Relaxed Fit\nEmbroidered Front Panel\nColour: Teal\nFabric: Textured Karandi",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Shirts",
+    "flagNames": ["New Arrival"],
+    "finalPrice": 5490,
+    "finalDiscount": 2745,
+    "finalStock": 35,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2f57d03f/images/Dec25/8thDec25/2STSDW25V554_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2f57d03f/images/Dec25/8thDec25/2STSDW25V554_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw7a30d71d/images/Dec25/8thDec25/2STSDW25V554_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw0cfddb1b/images/Dec25/8thDec25/2STSDW25V554_999_4.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["karandi", "embroidered", "a-line", "teal", "winter"],
+    "metaTitle": "Embroidered Karandi A-Line Shirt - Sapphire",
+    "metaDescription": "Shop Embroidered Karandi A-Line Shirt in Teal. Textured karandi with relaxed fit.",
+    "metaKeywords": ["karandi shirt", "a-line shirt", "women shirt"],
+    "variants": [
+      { "sizeName": "XS", "stock": 7, "price": 5490, "discount": 2745 },
+      { "sizeName": "S", "stock": 10, "price": 5490, "discount": 2745 },
+      { "sizeName": "M", "stock": 12, "price": 5490, "discount": 2745 },
+      { "sizeName": "L", "stock": 8, "price": 5490, "discount": 2745 },
+      { "sizeName": "XL", "stock": 5, "price": 5490, "discount": 2745 }
+    ]
+  },
+  {
+    "name": "Solid Khaddar Trouser",
+    "productCode": "SKTR25V003_999",
+    "shortDesc": "Trouser, Colour: Black, Fabric: Khaddar",
+    "longDesc": "Trouser\nColour: Black\nFabric: Khaddar\nComfortable fit for everyday wear",
+    "categoryName": "Women",
+    "subCategoryName": "Ready To Wear",
+    "childCategoryName": "Bottoms",
+    "flagNames": ["50% OFF"],
+    "finalPrice": 2890,
+    "finalDiscount": 1445,
+    "finalStock": 50,
+    "thumbnailImage": "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw775bec78/images/Dec25/10thDec25/2SPRW25V584T_999_2.JPG?sw=600&sh=720",
+    "images": [
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw775bec78/images/Dec25/10thDec25/2SPRW25V584T_999_2.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2e83c164/images/Dec25/10thDec25/2SPRW25V584T_999_3.JPG?sw=1000&sh=1200",
+      "https://pk.sapphireonline.pk/dw/image/v2/BKSB_PRD/on/demandware.static/-/Sites-sapphire-master-catalog/default/dw2aff5d32/images/Dec25/10thDec25/2SPRW25V584T_999_4.JPG?sw=1000&sh=1200"
+    ],
+    "searchTags": ["khaddar", "trouser", "black", "bottoms", "solid"],
+    "metaTitle": "Solid Khaddar Trouser - Sapphire",
+    "metaDescription": "Shop Solid Khaddar Trouser in Black. Premium khaddar fabric.",
+    "metaKeywords": ["khaddar trouser", "women bottoms", "winter wear"],
+    "variants": [
+      { "sizeName": "XS", "stock": 10, "price": 2890, "discount": 1445 },
+      { "sizeName": "S", "stock": 15, "price": 2890, "discount": 1445 },
+      { "sizeName": "M", "stock": 18, "price": 2890, "discount": 1445 },
+      { "sizeName": "L", "stock": 12, "price": 2890, "discount": 1445 },
+      { "sizeName": "XL", "stock": 8, "price": 2890, "discount": 1445 }
+    ]
+  }
+]

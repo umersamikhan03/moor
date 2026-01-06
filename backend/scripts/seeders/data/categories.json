@@ -1,0 +1,32 @@
+{
+  "categories": [
+    { "name": "Women", "featureCategory": true, "showOnNavbar": true },
+    { "name": "Accessories", "featureCategory": true, "showOnNavbar": true }
+  ],
+  "subCategories": [
+    { "name": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Unstitched", "categoryName": "Women", "isActive": true },
+    { "name": "Western Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Women's Bags", "categoryName": "Accessories", "isActive": true },
+    { "name": "Women's Footwear", "categoryName": "Accessories", "isActive": true },
+    { "name": "Fragrances", "categoryName": "Accessories", "isActive": true }
+  ],
+  "childCategories": [
+    { "name": "Shirts", "subCategoryName": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Bottoms", "subCategoryName": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Dresses", "subCategoryName": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Co-Ord Sets", "subCategoryName": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Dupattas & Shawls", "subCategoryName": "Ready To Wear", "categoryName": "Women", "isActive": true },
+    { "name": "1 Piece", "subCategoryName": "Unstitched", "categoryName": "Women", "isActive": true },
+    { "name": "2 Piece", "subCategoryName": "Unstitched", "categoryName": "Women", "isActive": true },
+    { "name": "3 Piece", "subCategoryName": "Unstitched", "categoryName": "Women", "isActive": true },
+    { "name": "Tops & Shirts", "subCategoryName": "Western Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Jeans", "subCategoryName": "Western Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Western Dresses", "subCategoryName": "Western Wear", "categoryName": "Women", "isActive": true },
+    { "name": "Tote Bags", "subCategoryName": "Women's Bags", "categoryName": "Accessories", "isActive": true },
+    { "name": "Cross Body Bags", "subCategoryName": "Women's Bags", "categoryName": "Accessories", "isActive": true },
+    { "name": "Shoulder Bags", "subCategoryName": "Women's Bags", "categoryName": "Accessories", "isActive": true },
+    { "name": "Heels", "subCategoryName": "Women's Footwear", "categoryName": "Accessories", "isActive": true },
+    { "name": "Flats", "subCategoryName": "Women's Footwear", "categoryName": "Accessories", "isActive": true }
+  ]
+}
