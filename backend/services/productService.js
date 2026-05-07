@@ -3,14 +3,113 @@ const FlagModel = require("../models/FlagModel");
 const CategoryModel = require("../models/CategoryModel");
 const SubCategoryModel = require("../models/SubCategoryModel");
 const ChildCategoryModel = require("../models/ChildCategoryModel");
+const ProductSizeModel = require("../models/ProductSizeModel");
 const mongoose = require("mongoose");
+
+const normalizeAttributes = (variant = {}) => {
+  if (Array.isArray(variant.attributes) && variant.attributes.length > 0) {
+    return variant.attributes
+      .filter((attr) => attr && attr.name && attr.value !== undefined)
+      .map((attr) => ({
+        name: String(attr.name).trim().toLowerCase(),
+        value: String(attr.value).trim(),
+        optionId: attr.optionId || null,
+      }));
+  }
+
+  const attributes = [];
+  if (variant.size) {
+    if (typeof variant.size === "object") {
+      attributes.push({
+        name: "size",
+        value: variant.size.name || variant.size.value || String(variant.size._id || ""),
+        optionId: variant.size._id || null,
+      });
+    } else {
+      attributes.push({ name: "size", value: String(variant.size), optionId: variant.size });
+    }
+  }
+  if (variant.color) {
+    if (typeof variant.color === "object") {
+      attributes.push({
+        name: "color",
+        value: variant.color.name || variant.color.value || String(variant.color._id || ""),
+        optionId: variant.color._id || null,
+      });
+    } else {
+      attributes.push({ name: "color", value: String(variant.color), optionId: null });
+    }
+  }
+  return attributes;
+};
+
+const normalizeVariants = async (variants = []) => {
+  const sizeOptionIds = variants
+    .map((variant) => variant?.size)
+    .filter((size) => typeof size === "string" && mongoose.Types.ObjectId.isValid(size));
+
+  const sizeDocs = sizeOptionIds.length
+    ? await ProductSizeModel.find({ _id: { $in: sizeOptionIds } }).select("name").lean()
+    : [];
+  const sizeMap = new Map(sizeDocs.map((doc) => [doc._id.toString(), doc.name]));
+
+  return variants.map((variant) => {
+    const attributes = normalizeAttributes(variant).map((attr) => {
+      if (attr.name === "size" && attr.optionId && sizeMap.has(String(attr.optionId))) {
+        return { ...attr, value: sizeMap.get(String(attr.optionId)) };
+      }
+      if (attr.name === "size" && sizeMap.has(String(attr.value))) {
+        return { ...attr, value: sizeMap.get(String(attr.value)), optionId: attr.optionId || attr.value };
+      }
+      return attr;
+    });
+
+    return {
+      _id: variant._id,
+      attributes,
+      stock: Number(variant.stock),
+      price: Number(variant.price),
+      discount:
+        variant.discount === "" || variant.discount === undefined || variant.discount === null
+          ? null
+          : Number(variant.discount),
+    };
+  });
+};
+
+const getVariantAttribute = (variant, attrName) =>
+  variant?.attributes?.find((attr) => attr.name === attrName)?.value || null;
+
+const serializeProduct = (productDoc) => {
+  const product = typeof productDoc.toObject === "function" ? productDoc.toObject() : productDoc;
+  if (!Array.isArray(product.variants)) return product;
+
+  product.variants = product.variants.map((variant) => {
+    const sizeName = getVariantAttribute(variant, "size");
+    const colorName = getVariantAttribute(variant, "color");
+    const sizeAttr = variant.attributes?.find((attr) => attr.name === "size");
+    return {
+      ...variant,
+      sizeName: sizeName || undefined,
+      colorName: colorName || undefined,
+      // Backward compatibility for existing frontend code
+      size: sizeName ? { _id: sizeAttr?.optionId || null, name: sizeName } : undefined,
+      color: colorName ? { name: colorName } : undefined,
+    };
+  });
+
+  return product;
+};
 
 // Create a new product
 const createProduct = async (data) => {
   try {
+    if (Array.isArray(data.variants) && data.variants.length > 0) {
+      data.variants = await normalizeVariants(data.variants);
+    }
     const product = new ProductModel(data); // Save product with image names
     await product.save();
-    return product;
+    return serializeProduct(product);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -29,11 +128,9 @@ const getProducts = async () => {
         { path: "subCategory", select: "-createdAt -updatedAt" },
         { path: "childCategory", select: "-createdAt -updatedAt" },
         { path: "flags", select: "-createdAt -updatedAt" },
-        { path: "variants", select: "-createdAt -updatedAt" },
-        { path: "variants.size", select: "-createdAt -updatedAt" }, // If size is nested
       ]);
 
-    return products;
+    return products.map(serializeProduct);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -49,11 +146,9 @@ const getProductById = async (productId) => {
       { path: "subCategory", select: "-createdAt -updatedAt" },
       { path: "childCategory", select: "-createdAt -updatedAt" },
       { path: "flags", select: "-createdAt -updatedAt" },
-      { path: "variants", select: "-createdAt -updatedAt" },
-      { path: "variants.size", select: "-createdAt -updatedAt" }, // If size is nested
     ]);
     if (!product) throw new Error("Product not found");
-    return product;
+    return serializeProduct(product);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -68,13 +163,11 @@ const getProductBySlug = async (slug) => {
       { path: "subCategory", select: "-createdAt -updatedAt" },
       { path: "childCategory", select: "-createdAt -updatedAt" },
       { path: "flags", select: "-createdAt -updatedAt" },
-      { path: "variants", select: "-createdAt -updatedAt" },
-      { path: "variants.size", select: "-createdAt -updatedAt" }, // If size is nested
     ]);
 
     if (!product) throw new Error("Product not found");
 
-    return product;
+    return serializeProduct(product);
   } catch (error) {
     throw new Error(error.message);
   }
@@ -382,11 +475,10 @@ const getAllProducts = async ({
       .populate([
         { path: "category", select: "-createdAt -updatedAt" },
         { path: "flags", select: "-createdAt -updatedAt" },
-        { path: "variants.size", select: "-createdAt -updatedAt" },
       ]);
 
     return {
-      products,
+      products: products.map(serializeProduct),
       totalProducts,
       totalPages: Math.ceil(totalProducts / limit),
       currentPage: page,
@@ -439,74 +531,7 @@ const updateProduct = async (productId, updatedData, files) => {
 
     // 2. Secure variant updates
     if (updatedData.variants && Array.isArray(updatedData.variants)) {
-      const existingVariantsMap = new Map();
-      product.variants.forEach((v) => {
-        existingVariantsMap.set(v.size._id.toString(), v);
-      });
-
-      updatedData.variants = updatedData.variants.map((variantData, index) => {
-        // Handle all possible size identification formats
-        const sizeId =
-          variantData.size &&
-          typeof variantData.size === "object" &&
-          variantData.size._id
-            ? variantData.size._id.toString()
-            : variantData.sizeId
-              ? variantData.sizeId.toString()
-              : variantData._id
-                ? product.variants.id(variantData._id)?.size._id.toString()
-                : typeof variantData.size === "string"
-                  ? variantData.size // This handles your current format
-                  : null;
-
-        if (!sizeId) {
-          throw new Error(
-            `Cannot identify variant at index ${index}. Valid formats:\n` +
-              `1. { size: "size_id_string" } (your current format)\n` +
-              `2. { size: { _id: "size_id" } }\n` +
-              `3. { sizeId: "size_id" }\n` +
-              `4. { _id: "variant_id" }`,
-          );
-        }
-
-        const existingVariant = existingVariantsMap.get(sizeId);
-
-        if (existingVariant) {
-          return {
-            _id: existingVariant._id,
-            size: existingVariant.size,
-            stock:
-              variantData.stock !== undefined
-                ? Number(variantData.stock)
-                : existingVariant.stock,
-            price:
-              variantData.price !== undefined
-                ? Number(variantData.price)
-                : existingVariant.price,
-            discount:
-              variantData.discount !== undefined
-                ? variantData.discount === ""
-                  ? null
-                  : Number(variantData.discount)
-                : existingVariant.discount,
-          };
-        }
-
-        // New variant
-        if (!variantData.price || !variantData.stock) {
-          throw new Error(`New variant requires price and stock`);
-        }
-
-        return {
-          size: { _id: sizeId }, // Convert to proper size object
-          price: Number(variantData.price),
-          stock: Number(variantData.stock),
-          discount:
-            variantData.discount === ""
-              ? null
-              : Number(variantData.discount) || null,
-        };
-      });
+      updatedData.variants = await normalizeVariants(updatedData.variants);
     }
 
     // Handle other updates and save...
@@ -514,7 +539,7 @@ const updateProduct = async (productId, updatedData, files) => {
 
     await product.save();
 
-    return product;
+    return serializeProduct(product);
   } catch (error) {
     console.error("Update failed:", {
       error: error.message,
@@ -549,13 +574,12 @@ const getSimilarProducts = async (category, excludeId) => {
       .populate([
         { path: "category", select: "-createdAt -updatedAt" },
         { path: "flags", select: "-createdAt -updatedAt" },
-        { path: "variants.size", select: "-createdAt -updatedAt" },
       ]);
 
     // Randomize the order using a Fisher-Yates shuffle
     const shuffledProducts = shuffleArray(similarProducts);
 
-    return shuffledProducts;
+    return shuffledProducts.map(serializeProduct);
   } catch (error) {
     throw new Error("Failed to fetch similar products: " + error.message);
   }
@@ -616,7 +640,9 @@ const getProductDetailsService = async ({ productId, variantId }) => {
         category: product.category,
         selectedVariant: {
           _id: selectedVariant._id,
-          size: selectedVariant.size,
+          attributes: selectedVariant.attributes || [],
+          size: getVariantAttribute(selectedVariant, "size"),
+          color: getVariantAttribute(selectedVariant, "color"),
           price: selectedVariant.price,
           stock: selectedVariant.stock,
           discount: selectedVariant.discount ?? 0,
@@ -665,13 +691,12 @@ const getHomePageProducts = async () => {
         .select(
           "name slug finalDiscount finalPrice finalStock thumbnailImage isActive images productId category variants flags",
         )
-        .populate([
+      .populate([
           { path: "category", select: "-createdAt -updatedAt" },
           { path: "flags", select: "-createdAt -updatedAt" },
-          { path: "variants.size", select: "-createdAt -updatedAt" },
         ]);
 
-      result[flag.name] = products;
+      result[flag.name] = products.map(serializeProduct);
     }
 
     return result;

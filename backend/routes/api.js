@@ -1,6 +1,7 @@
 const express = require("express");
 const multer = require("multer");
 const path = require("path");
+const fs = require("fs");
 
 const generalInfoController = require("../controllers/GeneralInfoController");
 const newsletterController = require("../controllers/NewsLetterController");
@@ -60,9 +61,14 @@ require("dotenv").config();
 
 const router = express.Router();
 
+const uploadsDir = path.join(__dirname, "../uploads");
+if (!fs.existsSync(uploadsDir)) {
+  fs.mkdirSync(uploadsDir, { recursive: true });
+}
+
 // Set Up Multer Storage
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "uploads/"), // Ensure files are saved in the 'uploads' folder
+  destination: (req, file, cb) => cb(null, uploadsDir),
   filename: (req, file, cb) =>
     cb(null, Date.now() + path.extname(file.originalname)), // Naming files uniquely
 });

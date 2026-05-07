@@ -11,6 +11,18 @@ const saveCart = (cart) => {
   localStorage.setItem("cart", JSON.stringify(cart));
 };
 
+const getVariantAttrValue = (variant, attrName) =>
+  variant?.attributes?.find((attr) => attr.name === attrName)?.value ||
+  (attrName === "size" ? variant?.size?.name : variant?.color?.name) ||
+  "";
+
+const buildVariantLabel = (selectedVariant) => {
+  if (!selectedVariant) return "Default";
+  const size = getVariantAttrValue(selectedVariant, "size");
+  const color = getVariantAttrValue(selectedVariant, "color");
+  return [size, color].filter(Boolean).join(" / ") || "Default";
+};
+
 const useCartStore = create((set, get) => ({
   cart: loadCart(),
 
@@ -31,6 +43,7 @@ const useCartStore = create((set, get) => ({
         thumbnail: item.thumbnail,
         slug: item.slug,
         variantId: item.variantId || "Default",
+        variantKey: item.variantId || item.variant || "Default",
       }));
 
       saveCart(serverCartItems);
@@ -41,13 +54,15 @@ const useCartStore = create((set, get) => ({
   },
 
   addToCart: async (product, quantity, selectedVariant) => {
-    const variant = selectedVariant?.size?.name || "Default";
+    const variant = buildVariantLabel(selectedVariant);
     const variantId = selectedVariant?._id || "Default";
     const token = localStorage.getItem("user_token");
 
     set((state) => {
       const existingIndex = state.cart.findIndex(
-        (item) => item.productId === product.id && item.variant === variant
+        (item) =>
+          item.productId === product.id &&
+          (item.variantKey || item.variantId || item.variant) === variantId
       );
 
       let updatedCart = [...state.cart];
@@ -75,6 +90,7 @@ const useCartStore = create((set, get) => ({
           quantity,
           thumbnail: product.thumbnailImage,
           variantId,
+          variantKey: variantId,
           slug: product.slug,
         });
       }
@@ -105,6 +121,7 @@ const useCartStore = create((set, get) => ({
             thumbnail: product.thumbnailImage,
             slug: product.slug,
             variantId,
+            variantKey: variantId,
           },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -114,13 +131,14 @@ const useCartStore = create((set, get) => ({
     }
   },
 
-  updateQuantity: async (productId, variant, quantity) => {
+  updateQuantity: async (productId, variantKey, quantity) => {
     const newQuantity = Math.min(quantity, 5);
     const token = localStorage.getItem("user_token");
 
     set((state) => {
       const updatedCart = state.cart.map((item) =>
-        item.productId === productId && item.variant === variant
+        item.productId === productId &&
+        (item.variantKey || item.variantId || item.variant) === variantKey
           ? { ...item, quantity: newQuantity }
           : item
       );
@@ -133,7 +151,7 @@ const useCartStore = create((set, get) => ({
     try {
       await axios.patch(
         `${apiUrl}/updateCartItem`,
-        { productId, variant, quantity: newQuantity },
+        { productId, variantId: variantKey, quantity: newQuantity },
         { headers: { Authorization: `Bearer ${token}` } }
       );
     } catch (error) {
@@ -141,10 +159,14 @@ const useCartStore = create((set, get) => ({
     }
   },
 
-  removeFromCart: async (productId, variant) => {
+  removeFromCart: async (productId, variantKey) => {
     set((state) => {
       const updatedCart = state.cart.filter(
-        (item) => !(item.productId === productId && item.variant === variant)
+        (item) =>
+          !(
+            item.productId === productId &&
+            (item.variantKey || item.variantId || item.variant) === variantKey
+          )
       );
       saveCart(updatedCart);
       return { cart: updatedCart };
@@ -155,7 +177,7 @@ const useCartStore = create((set, get) => ({
       try {
         await axios.delete(`${apiUrl}/removeCartItem`, {
           headers: { Authorization: `Bearer ${token}` },
-          data: { productId, variant },
+          data: { productId, variantId: variantKey },
         });
       } catch (error) {
         console.error("Error removing cart item from DB:", error);
@@ -199,6 +221,7 @@ const useCartStore = create((set, get) => ({
             thumbnail: item.thumbnail,
             slug: item.slug,
             variantId: item.variantId,
+            variantKey: item.variantKey || item.variantId || item.variant,
           },
           {
             headers: {
@@ -225,6 +248,7 @@ const useCartStore = create((set, get) => ({
         thumbnail: item.thumbnail,
         slug: item.product?.slug,
         variantId: item.variantId,
+        variantKey: item.variantId || item.variant || "Default",
       }));
 
       saveCart(serverCartItems);

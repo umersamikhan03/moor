@@ -456,7 +456,7 @@ const ViewOrder = () => {
                       </TableCell>
                       <TableCell>
                         {variant
-                          ? variant.sizeName || variant.size?.name
+                          ? variant.variantLabel || variant.sizeName || variant.size?.name
                           : "N/A"}
                       </TableCell>
                       <TableCell>
@@ -694,7 +694,9 @@ const ViewOrder = () => {
               <TableBody>
                 {selectedProduct?.variants?.map((variant) => (
                   <TableRow key={variant._id}>
-                    <TableCell>{variant.size?.name || "N/A"}</TableCell>
+                    <TableCell>
+                      {variant.variantLabel || variant.size?.name || "N/A"}
+                    </TableCell>
                     <TableCell>{variant.stock}</TableCell>
                     <TableCell>
                       <Button

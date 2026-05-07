@@ -13,6 +13,19 @@ const ProductAddToCart = ({ product }) => {
   const navigate = useNavigate();
 
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
+
+  const getAttrValue = (variant, attrName) =>
+    variant?.attributes?.find((attr) => attr.name === attrName)?.value ||
+    (attrName === "size" ? variant?.size?.name : variant?.color?.name) ||
+    "";
+
+  const getVariantLabel = (variant) => {
+    const size = getAttrValue(variant, "size");
+    const color = getAttrValue(variant, "color");
+    return [size, color].filter(Boolean).join(" / ") || "Default";
+  };
 
   const handleAddToCart = () => {
     addToCart(product, quantity, selectedVariant);
@@ -40,7 +53,7 @@ const ProductAddToCart = ({ product }) => {
               selectedVariant?.discount > 0
                 ? selectedVariant.price - selectedVariant.discount
                 : product.finalPrice - product.finalDiscount,
-            item_variant: selectedVariant?.size?.name || "Default",
+            item_variant: selectedVariant ? getVariantLabel(selectedVariant) : "Default",
             price:
               selectedVariant?.discount > 0
                 ? selectedVariant.discount
@@ -70,15 +83,46 @@ const ProductAddToCart = ({ product }) => {
 
   useEffect(() => {
     if (product?.variants?.length > 0) {
-      setSelectedVariant(product.variants[0]); // Default to first variant when product is fetched
+      const firstVariant = product.variants[0];
+      setSelectedVariant(firstVariant);
+      setSelectedSize(getAttrValue(firstVariant, "size"));
+      setSelectedColor(getAttrValue(firstVariant, "color"));
     }
   }, [product]);
 
-  const handleSizeChange = (sizeName) => {
-    const newVariant = product.variants.find(
-      (variant) => variant.size.name === sizeName,
+  const findVariantByCombination = (sizeName, colorName) =>
+    product.variants.find(
+      (variant) =>
+        getAttrValue(variant, "size") === sizeName &&
+        getAttrValue(variant, "color") === colorName,
     );
-    setSelectedVariant(newVariant);
+
+  const availableSizes = [
+    ...new Set(product?.variants?.map((variant) => getAttrValue(variant, "size"))),
+  ].filter(Boolean);
+
+  const availableColors = [
+    ...new Set(
+      (product?.variants || [])
+        .filter((variant) => getAttrValue(variant, "size") === selectedSize)
+        .map((variant) => getAttrValue(variant, "color")),
+    ),
+  ].filter(Boolean);
+
+  const handleSizeChange = (sizeName) => {
+    setSelectedSize(sizeName);
+    const firstColorForSize = (product?.variants || [])
+      .filter((variant) => getAttrValue(variant, "size") === sizeName)
+      .map((variant) => getAttrValue(variant, "color"))
+      .find(Boolean);
+    const fallbackColor = firstColorForSize || "";
+    setSelectedColor(fallbackColor);
+    setSelectedVariant(findVariantByCombination(sizeName, fallbackColor) || null);
+  };
+
+  const handleColorChange = (colorName) => {
+    setSelectedColor(colorName);
+    setSelectedVariant(findVariantByCombination(selectedSize, colorName) || null);
   };
 
   return (
@@ -162,17 +206,37 @@ const ProductAddToCart = ({ product }) => {
             <div className={"flex gap-4 items-center"}>
               <h2 className="text-lg">Size</h2>
               <div className="flex gap-2 flex-wrap justify-center ">
-                {product.variants.map((variant) => (
+                {availableSizes.map((sizeName) => (
                   <button
-                    key={variant.size.name}
-                    onClick={() => handleSizeChange(variant.size.name)}
+                    key={sizeName}
+                    onClick={() => handleSizeChange(sizeName)}
                     className={`px-2 py-1 rounded transition-all cursor-pointer  ${
-                      selectedVariant?.size.name === variant.size.name
+                      selectedSize === sizeName
                         ? "primaryBgColor text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                     }`}
                   >
-                    {variant.size.name}
+                    {sizeName}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {product.variants?.length > 0 && (
+            <div className={"flex gap-4 items-center"}>
+              <h2 className="text-lg">Color</h2>
+              <div className="flex gap-2 flex-wrap justify-center ">
+                {availableColors.map((colorName) => (
+                  <button
+                    key={colorName}
+                    onClick={() => handleColorChange(colorName)}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer  ${
+                      selectedColor === colorName
+                        ? "primaryBgColor text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {colorName}
                   </button>
                 ))}
               </div>
@@ -211,9 +275,13 @@ const ProductAddToCart = ({ product }) => {
               </button>
             </div>
             {/*Add to Cart Button*/}
-            {selectedVariant?.stock === 0 || product.finalStock === 0 ? (
+            {(product.variants?.length > 0 && !selectedVariant) ||
+            selectedVariant?.stock === 0 ||
+            product.finalStock === 0 ? (
               <button className="text-red-600 font-semibold" disabled>
-                Stock Out
+                {product.variants?.length > 0 && !selectedVariant
+                  ? "Select valid variant"
+                  : "Stock Out"}
               </button>
             ) : (
               <motion.button
@@ -231,7 +299,9 @@ const ProductAddToCart = ({ product }) => {
             )}
           </div>
           {/*Cash On Delivery Order Button*/}
-          {selectedVariant?.stock === 0 || product.finalStock === 0 ? null : (
+          {(product.variants?.length > 0 && !selectedVariant) ||
+          selectedVariant?.stock === 0 ||
+          product.finalStock === 0 ? null : (
             <motion.button
               className="primaryBgColor accentTextColor px-2 py-1 md:py-2 rounded cursor-pointer"
               // animate={{ scale: [1, 1.05, 1] }} // Scale animation

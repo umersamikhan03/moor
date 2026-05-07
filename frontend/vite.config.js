@@ -38,7 +38,7 @@ export default defineConfig(async () => {
     server: {
       proxy: {
         "/api": {
-          target: "http://localhost:5050", // your backend
+          target: "http://localhost:3002", // backend/.env -> PORT=3002
           changeOrigin: true,
           secure: false,
         },

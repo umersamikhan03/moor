@@ -2,10 +2,30 @@ const productService = require("../services/productService");
 const mongoose = require("mongoose");
 const redisClient = require('../config/redisClient');
 
+const normalizeIncomingVariants = (variants) => {
+  if (!variants) return variants;
+  if (Array.isArray(variants)) return variants;
+  if (typeof variants === "string") {
+    try {
+      const parsed = JSON.parse(variants);
+      return Array.isArray(parsed) ? parsed : variants;
+    } catch (err) {
+      return variants;
+    }
+  }
+  if (typeof variants === "object") {
+    return Object.keys(variants)
+      .sort((a, b) => Number(a) - Number(b))
+      .map((key) => variants[key]);
+  }
+  return variants;
+};
+
 // Create a product
 const createProduct = async (req, res) => {
   try {
     const productData = { ...req.body };
+    productData.variants = normalizeIncomingVariants(productData.variants);
 
     // Check if thumbnailImage is uploaded
     if (req.files && req.files.thumbnailImage) {
@@ -198,7 +218,8 @@ const getAllProducts = async (req, res) => {
 const updateProduct = async (req, res) => {
   try {
     const productId = req.params.id;
-    const updatedData = req.body;
+    const updatedData = { ...req.body };
+    updatedData.variants = normalizeIncomingVariants(updatedData.variants);
     const files = req.files; // Get uploaded files
 
     // Call the service with `files`

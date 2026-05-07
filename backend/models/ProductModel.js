@@ -2,11 +2,37 @@ const mongoose = require("mongoose");
 const CounterModel = require("./CounterModel");
 const slugify = require("slugify");
 
-const productSizeSchema = new mongoose.Schema({
-  size: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "ProductSize",
-    required: true,
+const productVariantAttributeSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      trim: true,
+      required: true,
+      lowercase: true,
+    },
+    value: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+    optionId: {
+      type: mongoose.Schema.Types.ObjectId,
+      default: null,
+    },
+  },
+  { _id: false },
+);
+
+const productVariantSchema = new mongoose.Schema({
+  attributes: {
+    type: [productVariantAttributeSchema],
+    default: [],
+    validate: {
+      validator: function (value) {
+        return Array.isArray(value) && value.length > 0;
+      },
+      message: "Each variant must contain at least one attribute",
+    },
   },
   stock: {
     type: Number,
@@ -87,7 +113,7 @@ const productSchema = new mongoose.Schema(
     thumbnailImage: { type: String, trim: true, required: true },
     images: [{ type: String, trim: true, required: true }],
 
-    variants: { type: [productSizeSchema], default: [] },
+    variants: { type: [productVariantSchema], default: [] },
 
     finalPrice: {
       type: Number,

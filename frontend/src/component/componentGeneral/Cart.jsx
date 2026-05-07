@@ -42,7 +42,7 @@ const Cart = ({ onCloseCartMenu }) => {
         <div className="grid gap-4">
           {cart.map((item, index) => (
             <div
-              key={`${item.id || item.productId || index}-${item.variant}`}
+              key={`${item.id || item.productId || index}-${item.variantKey || item.variantId || item.variant}`}
               className="grid grid-cols-2 gap-3 border-t border-dashed py-2"
             >
               {/*Product Thumbnail*/}
@@ -93,7 +93,7 @@ const Cart = ({ onCloseCartMenu }) => {
                         onClick={() =>
                           updateQuantity(
                             item.productId, // <-- FIXED
-                            item.variant,
+                            item.variantKey || item.variantId || item.variant,
                             item.quantity - 1,
                           )
                         }
@@ -110,7 +110,7 @@ const Cart = ({ onCloseCartMenu }) => {
                         onClick={() =>
                           updateQuantity(
                             item.productId, // <-- FIXED
-                            item.variant,
+                            item.variantKey || item.variantId || item.variant,
                             item.quantity + 1,
                           )
                         }
@@ -123,7 +123,10 @@ const Cart = ({ onCloseCartMenu }) => {
                     <div>
                       <button
                         onClick={() =>
-                          removeFromCart(item.productId, item.variant)
+                          removeFromCart(
+                            item.productId,
+                            item.variantKey || item.variantId || item.variant,
+                          )
                         } // <-- FIXED
                         className="text-red-500 text-lg cursor-pointer"
                       >

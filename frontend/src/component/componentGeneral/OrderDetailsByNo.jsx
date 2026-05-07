@@ -202,7 +202,11 @@ const OrderDetailsByNo = () => {
                         <div>Code: {product.productCode || "N/A"}</div>
                       </div>
                     </TableCell>
-                    <TableCell>{variant ? variant.sizeName : "N/A"}</TableCell>
+                    <TableCell>
+                      {variant
+                        ? variant.variantLabel || variant.sizeName || "N/A"
+                        : "N/A"}
+                    </TableCell>
                     <TableCell>{item.quantity}</TableCell>
                     <TableCell>{(item.price ?? 0).toFixed(2)}</TableCell>
                     <TableCell>{totalPrice.toFixed(2)}</TableCell>

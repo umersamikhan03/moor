@@ -13,13 +13,13 @@ import useOrderStore from "../store/useOrderStore.js";
 const DashboardPage = ({ pageDetails, title }) => {
 
 
-  const { fetchAllOrders } = useOrderStore();
+  const { fetchAllOrders, fetchAllOrdersWithoutPagination } = useOrderStore();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         await Promise.all([
-
+          fetchAllOrdersWithoutPagination(),
           fetchAllOrders(),
           fetchAllOrders("pending"),
           fetchAllOrders("approved"),
@@ -34,7 +34,7 @@ const DashboardPage = ({ pageDetails, title }) => {
     };
 
     fetchData();
-  }, []); // ✅ Empty dependency array to prevent unnecessary re-renders
+  }, [fetchAllOrders, fetchAllOrdersWithoutPagination]); // Fetch once for dashboard datasets
 
 
 

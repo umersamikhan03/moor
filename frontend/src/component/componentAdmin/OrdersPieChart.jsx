@@ -14,13 +14,9 @@ const statusLabels = {
 };
 
 const OrdersPieChart = () => {
-  const { fetchAllOrdersWithoutPagination, allOrders } = useOrderStore();
+  const { allOrders } = useOrderStore();
   const [timeframe, setTimeframe] = useState("monthly");
   const [statusCounts, setStatusCounts] = useState({});
-
-  useEffect(() => {
-    fetchAllOrdersWithoutPagination(); // fetch once on mount
-  }, [fetchAllOrdersWithoutPagination]);
 
   useEffect(() => {
     const now = dayjs();

@@ -146,7 +146,10 @@ const TrackOrder = () => {
                       {item.productId?.name}
                     </p>
                     <p className="text-sm text-gray-500">
-                      Size: {item.productId?.variants?.[0]?.sizeName}
+                      Variant:{" "}
+                      {item.productId?.variants?.[0]?.variantLabel ||
+                        item.productId?.variants?.[0]?.sizeName ||
+                        "N/A"}
                     </p>
                     <div className="flex justify-between text-sm text-gray-600">
                       <span>Qty: {item.quantity}</span>

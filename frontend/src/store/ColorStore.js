@@ -23,7 +23,8 @@ const useColorStore = create((set) => ({
         throw new Error("Invalid API response");
       }
     } catch (error) {
-      set({ error: error.message || "Failed to fetch colors", isLoading: false });
+      const apiMessage = error?.response?.data?.message;
+      set({ error: apiMessage || error.message || "Failed to fetch colors", isLoading: false });
     }
   },
 
@@ -46,7 +47,9 @@ const useColorStore = create((set) => ({
         throw new Error("Invalid API response");
       }
     } catch (error) {
-      set({ error: error.message || "Failed to update colors", isLoading: false });
+      const apiMessage = error?.response?.data?.message;
+      set({ error: apiMessage || error.message || "Failed to update colors", isLoading: false });
+      throw error;
     }
   },
 }));

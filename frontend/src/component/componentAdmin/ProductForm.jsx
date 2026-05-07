@@ -82,7 +82,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
   const [selectedFlags, setSelectedFlags] = useState([]);
   const [hasVariant, setHasVariant] = useState(true);
   const [variants, setVariants] = useState([
-    { size: "", stock: "", price: "", discount: "" },
+    { size: "", color: "", stock: "", price: "", discount: "" },
   ]);
   const [isActive, setIsActive] = useState("");
   const [existingImages, setExistingImages] = useState([]);
@@ -130,14 +130,14 @@ const ProductForm = ({ isEdit: isEditMode }) => {
       if (product.category) {
         setSelectedCategory(product.category._id);
         const filteredSubs = subCategories.filter(
-          (sub) => sub.category._id === product.category._id,
+          (sub) => sub?.category?._id === product.category._id,
         );
         setFilteredSubCategories(filteredSubs);
 
         if (product.subCategory) {
           setSelectedSubCategory(product.subCategory._id);
           const filteredChilds = childCategories.filter(
-            (child) => child.subCategory._id === product.subCategory._id,
+            (child) => child?.subCategory?._id === product.subCategory._id,
           );
           setFilteredChildCategories(filteredChilds);
 
@@ -154,7 +154,8 @@ const ProductForm = ({ isEdit: isEditMode }) => {
       if (product.variants && product.variants.length > 0) {
         setVariants(
           product.variants.map((v) => ({
-            size: v.size._id,
+            size: v.size?._id || "",
+            color: v.colorName || v.color?.name || "",
             stock: v.stock,
             price: v.price,
             discount: v.discount || "",
@@ -174,7 +175,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
   const handleAddVariant = () => {
     setVariants([
       ...variants,
-      { size: "", stock: "", price: "", discount: "" },
+      { size: "", color: "", stock: "", price: "", discount: "" },
     ]);
   };
 
@@ -254,7 +255,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
     setSelectedChildCategory("");
 
     const filtered = subCategories.filter(
-      (sub) => sub.category._id === categoryId,
+      (sub) => sub?.category?._id === categoryId,
     );
     setFilteredSubCategories(filtered);
   };
@@ -265,7 +266,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
     setSelectedChildCategory("");
 
     const filtered = childCategories.filter(
-      (child) => child.subCategory._id === subCategoryId,
+      (child) => child?.subCategory?._id === subCategoryId,
     );
     setFilteredChildCategories(filtered);
   };
@@ -414,7 +415,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
     if (isEditMode) {
       if (variants.length > 0) {
         variants.forEach((variant, index) => {
-          if (variant.size && variant.stock && variant.price) {
+          if (variant.size && variant.color && variant.stock && variant.price) {
             Object.keys(variant).forEach((key) => {
               formData.append(`variants[${index}][${key}]`, variant[key]);
             });
@@ -426,7 +427,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
     } else {
       if (variants.length > 0) {
         variants.forEach((variant, index) => {
-          if (!variant.size || !variant.stock || !variant.price) {
+          if (!variant.size || !variant.color || !variant.stock || !variant.price) {
             return;
           }
           Object.keys(variant).forEach((key) => {
@@ -475,7 +476,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
         setImagePreview("");
         setSelectedImages([]);
         setImagePreviews([]);
-        setVariants([{ size: "", stock: "", price: "", discount: "" }]);
+        setVariants([{ size: "", color: "", stock: "", price: "", discount: "" }]);
         if (fileInputRef.current) fileInputRef.current.value = "";
         if (imagesInputRef.current) imagesInputRef.current.value = "";
       }
@@ -1077,6 +1078,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
                     <TableHead>
                       <TableRow>
                         <TableCell>Size</TableCell>
+                        <TableCell>Color</TableCell>
                         <TableCell>Stock *</TableCell>
                         <TableCell>Price *</TableCell>
                         <TableCell>Disc. Price</TableCell>
@@ -1107,6 +1109,20 @@ const ProductForm = ({ isEdit: isEditMode }) => {
                                   </MenuItem>
                                 ))}
                             </TextField>
+                          </TableCell>
+                          <TableCell>
+                            <TextField
+                              fullWidth
+                              value={variant.color}
+                              required={hasVariant}
+                              onChange={(e) => {
+                                const updated = [...variants];
+                                updated[index].color = e.target.value;
+                                setVariants(updated);
+                              }}
+                              sx={{ width: "140px" }}
+                              placeholder="e.g. Red"
+                            />
                           </TableCell>
                           <TableCell>
                             <TextField

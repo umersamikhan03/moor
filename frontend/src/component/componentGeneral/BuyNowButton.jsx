@@ -16,13 +16,42 @@ const BuyNowButton = ({ product, isAddToCart = false }) => {
   const [open, setOpen] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [selectedVariant, setSelectedVariant] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("");
+  const [selectedColor, setSelectedColor] = useState("");
   const { addToCart } = useCartStore();
   const navigate = useNavigate();
   const MAX_QUANTITY = 5;
 
+  const getAttrValue = (variant, attrName) =>
+    variant?.attributes?.find((attr) => attr.name === attrName)?.value ||
+    (attrName === "size" ? variant?.size?.name : variant?.color?.name) ||
+    "";
+
+  const findVariantByCombination = (sizeName, colorName) =>
+    product.variants.find(
+      (variant) =>
+        getAttrValue(variant, "size") === sizeName &&
+        getAttrValue(variant, "color") === colorName,
+    );
+
+  const availableSizes = [
+    ...new Set(product?.variants?.map((variant) => getAttrValue(variant, "size"))),
+  ].filter(Boolean);
+
+  const availableColors = [
+    ...new Set(
+      (product?.variants || [])
+        .filter((variant) => getAttrValue(variant, "size") === selectedSize)
+        .map((variant) => getAttrValue(variant, "color")),
+    ),
+  ].filter(Boolean);
+
   useEffect(() => {
     if (product?.variants?.length > 0) {
-      setSelectedVariant(product.variants[0]);
+      const firstVariant = product.variants[0];
+      setSelectedVariant(firstVariant);
+      setSelectedSize(getAttrValue(firstVariant, "size"));
+      setSelectedColor(getAttrValue(firstVariant, "color"));
     } else {
       setSelectedVariant(null);
     }
@@ -40,10 +69,18 @@ const BuyNowButton = ({ product, isAddToCart = false }) => {
   };
 
   const handleSizeChange = (sizeName) => {
-    const newVariant = product.variants.find(
-      (variant) => variant.size.name === sizeName,
-    );
-    setSelectedVariant(newVariant);
+    setSelectedSize(sizeName);
+    const firstColorForSize = (product?.variants || [])
+      .filter((variant) => getAttrValue(variant, "size") === sizeName)
+      .map((variant) => getAttrValue(variant, "color"))
+      .find(Boolean);
+    const fallbackColor = firstColorForSize || "";
+    setSelectedColor(fallbackColor);
+    setSelectedVariant(findVariantByCombination(sizeName, fallbackColor) || null);
+  };
+  const handleColorChange = (colorName) => {
+    setSelectedColor(colorName);
+    setSelectedVariant(findVariantByCombination(selectedSize, colorName) || null);
   };
 
   const handleConfirm = () => {
@@ -119,17 +156,37 @@ const BuyNowButton = ({ product, isAddToCart = false }) => {
             <div className="flex gap-4 items-center mt-4">
               <h2 className="text-lg">Weight:</h2>
               <div className="flex gap-2 flex-wrap">
-                {product.variants.map((variant) => (
+                {availableSizes.map((sizeName) => (
                   <button
-                    key={variant.size.name}
-                    onClick={() => handleSizeChange(variant.size.name)}
+                    key={sizeName}
+                    onClick={() => handleSizeChange(sizeName)}
                     className={`px-2 py-1 rounded transition-all cursor-pointer ${
-                      selectedVariant?.size.name === variant.size.name
+                      selectedSize === sizeName
                         ? "primaryBgColor text-white"
                         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
                     }`}
                   >
-                    {variant.size.name}
+                    {sizeName}
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+          {product.variants?.length > 0 && (
+            <div className="flex gap-4 items-center mt-4">
+              <h2 className="text-lg">Color:</h2>
+              <div className="flex gap-2 flex-wrap">
+                {availableColors.map((colorName) => (
+                  <button
+                    key={colorName}
+                    onClick={() => handleColorChange(colorName)}
+                    className={`px-2 py-1 rounded transition-all cursor-pointer ${
+                      selectedColor === colorName
+                        ? "primaryBgColor text-white"
+                        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    }`}
+                  >
+                    {colorName}
                   </button>
                 ))}
               </div>
@@ -172,7 +229,11 @@ const BuyNowButton = ({ product, isAddToCart = false }) => {
           <Button onClick={handleClose}>Cancel</Button>
           <Button
             onClick={handleConfirm}
-            disabled={selectedVariant?.stock === 0 || product.finalStock === 0}
+            disabled={
+              (product.variants?.length > 0 && !selectedVariant) ||
+              selectedVariant?.stock === 0 ||
+              product.finalStock === 0
+            }
             className="primaryBgColor"
             variant="contained"
           >

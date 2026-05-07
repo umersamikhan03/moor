@@ -206,7 +206,8 @@ const Headers = () => {
               {/* Logo */}
               <Link to="/" className="flex-shrink-0">
                 <ImageComponentWithCompression
-                  imageName={isScrolled || !isHomePage ? GeneralInfoList?.PrimaryLogo : (GeneralInfoList?.SecondaryLogo || GeneralInfoList?.PrimaryLogo)}
+                  imageName={GeneralInfoList?.PrimaryLogo}
+                  fallbackImageName={GeneralInfoList?.PrimaryLogo}
                   className="h-8 md:h-10 w-auto object-contain"
                   altName={GeneralInfoList?.CompanyName}
                   width={200}

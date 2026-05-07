@@ -54,6 +54,27 @@ const corsOptions = {
 // Trust proxy (needed for rate limiting behind proxies)
 app.set("trust proxy", 1);
 
+// Enable CORS early so static/uploads also get proper headers
+app.use(cors(corsOptions));
+
+// Set secure HTTP headers while allowing cross-origin image resources
+app.use(
+  helmet({
+    crossOriginResourcePolicy: { policy: "cross-origin" },
+  }),
+);
+
+// Ensure uploaded files can be used by frontend served from another origin/port
+app.use("/uploads", (req, res, next) => {
+  const requestOrigin = req.headers.origin;
+  if (requestOrigin && clientUrl.includes(requestOrigin.replace(/\/$/, ""))) {
+    res.setHeader("Access-Control-Allow-Origin", requestOrigin);
+    res.setHeader("Vary", "Origin");
+  }
+  res.setHeader("Cross-Origin-Resource-Policy", "cross-origin");
+  next();
+});
+
 
 // Apply Sharp middleware BEFORE static serving
 app.use("/uploads", imageMiddleware);
@@ -69,14 +90,9 @@ app.use(compression());
 // Cookie parser
 app.use(cookieParser());
 
-// Enable CORS
-app.use(cors(corsOptions));
-
 // Sanitize MongoDB queries to prevent NoSQL injection
 app.use(mongoSanitize);
 
-// Set secure HTTP headers
-app.use(helmet());
 
 // Prevent HTTP Parameter Pollution
 app.use(hpp());

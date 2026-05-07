@@ -14,12 +14,17 @@ const OrderReview = ({ cart, removeFromCart, updateQuantity, formattedTotalAmoun
       <div className="grid gap-4">
         {cart.map((item, index) => (
           <div
-            key={`${item.id || item.productId || index}-${item.variant}`}
+            key={`${item.id || item.productId || index}-${item.variantKey || item.variantId || item.variant}`}
             className="grid grid-cols-3 gap-3 items-center shadow rounded-lg p-3 "
           >
             <div className="flex items-center justify-baseline gap-2">
               <button
-                onClick={() => removeFromCart(item.productId, item.variant)}
+                onClick={() =>
+                  removeFromCart(
+                    item.productId,
+                    item.variantKey || item.variantId || item.variant,
+                  )
+                }
                 className="text-red-500 text-lg cursor-pointer"
               >
                 <FaTrash />
@@ -66,7 +71,7 @@ const OrderReview = ({ cart, removeFromCart, updateQuantity, formattedTotalAmoun
                     onClick={() =>
                       updateQuantity(
                         item.productId,
-                        item.variant,
+                        item.variantKey || item.variantId || item.variant,
                         item.quantity - 1,
                       )
                     }
@@ -82,7 +87,7 @@ const OrderReview = ({ cart, removeFromCart, updateQuantity, formattedTotalAmoun
                     onClick={() =>
                       updateQuantity(
                         item.productId,
-                        item.variant,
+                        item.variantKey || item.variantId || item.variant,
                         item.quantity + 1,
                       )
                     }

@@ -1,6 +1,8 @@
 const AbandonedCart = require("../models/AbandonedCartModel");
 const Product = require("../models/ProductModel");
-const ProductSizeModel = require("../models/ProductSizeModel"); // Import the ProductSizeModel
+
+const getVariantAttributeValue = (variant, attrName) =>
+  variant?.attributes?.find((attr) => attr.name === attrName)?.value || null;
 
 const createAbandonedCart = async (cartData) => {
   try {
@@ -49,8 +51,6 @@ const getAllAbandonedCarts = async (page = 1, limit = 10) => {
 
     const productMap = new Map(products.map((p) => [p._id.toString(), p]));
 
-    const sizeIds = new Set();
-
     carts.forEach((cart) => {
       cart.cartItems = cart.cartItems.map((item) => {
         const product = productMap.get(item.productId?.toString());
@@ -61,13 +61,10 @@ const getAllAbandonedCarts = async (page = 1, limit = 10) => {
           );
 
           if (matchedVariant) {
-            if (matchedVariant.size) {
-              sizeIds.add(matchedVariant.size.toString());
-            }
-
             item.variant = {
               ...matchedVariant,
-              size: matchedVariant.size?.toString(), // normalize
+              sizeName: getVariantAttributeValue(matchedVariant, "size") || "N/A",
+              colorName: getVariantAttributeValue(matchedVariant, "color") || "N/A",
             };
           }
 
@@ -88,22 +85,6 @@ const getAllAbandonedCarts = async (page = 1, limit = 10) => {
         }
 
         return item;
-      });
-    });
-
-    const sizes = await ProductSizeModel.find({
-      _id: { $in: Array.from(sizeIds) },
-    })
-      .select("name")
-      .lean();
-
-    const sizeMap = new Map(sizes.map((s) => [s._id.toString(), s.name]));
-
-    carts.forEach((cart) => {
-      cart.cartItems.forEach((item) => {
-        if (item.variant?.size) {
-          item.variant.sizeName = sizeMap.get(item.variant.size) || "N/A";
-        }
       });
     });
 
