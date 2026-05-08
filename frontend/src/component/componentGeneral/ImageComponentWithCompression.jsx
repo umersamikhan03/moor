@@ -1,19 +1,7 @@
 import React, { useState, useMemo, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
 import useIsMobile from "../../utils/useIsMobile.js";
-
-const normalizeImagePath = (imageName = "") => {
-  const rawValue = String(imageName || "").trim();
-  if (!rawValue) return "";
-  if (/^https?:\/\//i.test(rawValue)) return rawValue;
-
-  const normalized = rawValue.replace(/\\/g, "/");
-  const withoutUploadsPrefix = normalized.includes("/uploads/")
-    ? normalized.split("/uploads/").pop()
-    : normalized.replace(/^uploads\//i, "");
-
-  return withoutUploadsPrefix.split("?")[0];
-};
+import { buildUploadsImageUrl } from "../../utils/imageUrl.js";
 
 const ImageComponentWithCompression = ({
   imageName,
@@ -42,11 +30,7 @@ const ImageComponentWithCompression = ({
 
   if (!activeImageName) return null;
 
-  const apiUrl = import.meta.env.VITE_API_URL;
-  const normalizedImagePath = normalizeImagePath(activeImageName);
-  const baseUrl = /^https?:\/\//i.test(normalizedImagePath)
-    ? normalizedImagePath
-    : `${apiUrl.replace("/api", "")}/uploads/${normalizedImagePath}`;
+  const baseUrl = buildUploadsImageUrl(activeImageName);
 
   // 🔥 Adjust dimensions for mobile
   const { finalWidth, finalHeight } = useMemo(() => {
@@ -65,9 +49,7 @@ const ImageComponentWithCompression = ({
   if (finalWidth) params.append("width", finalWidth);
   if (finalHeight) params.append("height", finalHeight);
 
-  const imageUrl = params.toString()
-    ? `${baseUrl}?${params.toString()}`
-    : baseUrl;
+  const imageUrl = params.toString() ? `${baseUrl}?${params.toString()}` : baseUrl;
 
   return (
     <div className="relative overflow-hidden">

@@ -1,18 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Skeleton from "react-loading-skeleton";
-
-const normalizeImagePath = (imageName = "") => {
-  const rawValue = String(imageName || "").trim();
-  if (!rawValue) return "";
-  if (/^https?:\/\//i.test(rawValue)) return rawValue;
-
-  const normalized = rawValue.replace(/\\/g, "/");
-  const withoutUploadsPrefix = normalized.includes("/uploads/")
-    ? normalized.split("/uploads/").pop()
-    : normalized.replace(/^uploads\//i, "");
-
-  return withoutUploadsPrefix.split("?")[0];
-};
+import { buildUploadsImageUrl } from "../../utils/imageUrl.js";
 
 const ImageComponent = ({
   imageName,
@@ -25,11 +13,7 @@ const ImageComponent = ({
 
   useEffect(() => {
     if (imageName) {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const normalizedImagePath = normalizeImagePath(imageName);
-      const imageUrl = /^https?:\/\//i.test(normalizedImagePath)
-        ? normalizedImagePath
-        : `${apiUrl.replace("/api", "")}/uploads/${normalizedImagePath}`;
+      const imageUrl = buildUploadsImageUrl(imageName);
       setImageSrc(imageUrl);
       setIsLoading(true);
     } else {

@@ -1,15 +1,8 @@
-export function setFaviconFromApi(imageName = "") {
-  const API_URL = import.meta.env.VITE_API_URL || "";
-  const baseUrl = API_URL.replace("/api", "");
-  const normalizedImageName = String(imageName || "")
-    .replace(/\\/g, "/")
-    .replace(/^.*\/uploads\//i, "")
-    .replace(/^uploads\//i, "")
-    .split("?")[0];
+import { buildUploadsImageUrl, normalizeImagePath } from "./imageUrl.js";
 
-  const faviconUrl = normalizedImageName
-    ? `${baseUrl}/uploads/${normalizedImageName}`
-    : "";
+export function setFaviconFromApi(imageName = "") {
+  const normalizedImageName = normalizeImagePath(imageName);
+  const faviconUrl = buildUploadsImageUrl(imageName);
 
   // Remove all existing icon links
   const existingIcons = document.querySelectorAll(

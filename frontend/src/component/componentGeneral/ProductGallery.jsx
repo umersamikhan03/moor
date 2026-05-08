@@ -8,6 +8,7 @@ import lgZoom from "lightgallery/plugins/zoom";
 import ImageComponent from "./ImageComponentWithCompression.jsx";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { BsArrowsFullscreen } from "react-icons/bs";
+import { buildUploadsImageUrl } from "../../utils/imageUrl.js";
 
 const ProductGallery = ({ images, discount, zoom = true, productName }) => {
   const [imageUrls, setImageUrls] = useState([]);
@@ -17,10 +18,7 @@ const ProductGallery = ({ images, discount, zoom = true, productName }) => {
 
   useEffect(() => {
     if (images?.length > 0) {
-      const apiUrl = import.meta.env.VITE_API_URL;
-      const urls = images.map(
-        (imageName) => `${apiUrl.replace("/api", "")}/uploads/${imageName}`,
-      );
+      const urls = images.map((imageName) => buildUploadsImageUrl(imageName));
       setImageUrls(urls);
     }
   }, [images]);

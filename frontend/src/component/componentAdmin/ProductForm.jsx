@@ -37,6 +37,7 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import axios from "axios";
 import Skeleton from "react-loading-skeleton";
+import { buildUploadsImageUrl, getUploadsBaseUrl } from "../../utils/imageUrl.js";
 
 const ProductForm = ({ isEdit: isEditMode }) => {
   const { slug } = useParams();
@@ -97,7 +98,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
   const fileInputRef = useRef(null);
   const imagesInputRef = useRef(null);
 
-  const imageUrl = `${apiUrl.replace("/api", "")}/uploads`;
+  const imageUrl = getUploadsBaseUrl();
 
   useEffect(() => {
     if (isEditMode && slug) {
@@ -148,7 +149,7 @@ const ProductForm = ({ isEdit: isEditMode }) => {
       }
 
       if (product.thumbnailImage) {
-        setImagePreview(`${imageUrl}/${product.thumbnailImage}`);
+        setImagePreview(buildUploadsImageUrl(product.thumbnailImage));
       }
 
       if (product.variants && product.variants.length > 0) {

@@ -9,6 +9,7 @@ import {
   Box,
 } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
+import { buildUploadsImageUrl } from "../../utils/imageUrl.js";
 
 const UpdateUserForm = ({ token }) => {
   const baseUrl = import.meta.env.VITE_API_URL;
@@ -102,8 +103,7 @@ const UpdateUserForm = ({ token }) => {
     if (previewImage) {
       imageSrc = previewImage;
     } else if (formData.userImage && typeof formData.userImage === "string") {
-      const staticBaseUrl = baseUrl.endsWith('/api') ? baseUrl.slice(0, -4) : baseUrl;
-      imageSrc = `${staticBaseUrl}/uploads/${formData.userImage}`;
+      imageSrc = buildUploadsImageUrl(formData.userImage);
     }
     return imageSrc;
   };
