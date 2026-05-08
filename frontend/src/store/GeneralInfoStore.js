@@ -34,8 +34,12 @@ const useGeneralInfoStore = create((set) => ({
       const res = await axios.post(`${apiUrl}/updateGeneralInfo`, formData, {
         headers: { Authorization: `Bearer ${token}`, "Content-Type": "multipart/form-data" },
       });
-      set({ GeneralInfoSuccessMessage: res.data.message, GeneralInfoUpdateLoading: false });
-      return { success: true, message: res.data.message };
+      set({
+        GeneralInfoList: res.data?.data || null,
+        GeneralInfoSuccessMessage: res.data.message,
+        GeneralInfoUpdateLoading: false,
+      });
+      return { success: true, message: res.data.message, data: res.data?.data || null };
     } catch (error) {
       set({
         GeneralInfoErrorMessage: error.response?.data?.message || "Failed to update General Info",

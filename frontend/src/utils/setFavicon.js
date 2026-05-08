@@ -8,8 +8,8 @@ export function setFaviconFromApi(imageName = "") {
     .split("?")[0];
 
   const faviconUrl = normalizedImageName
-    ? `${baseUrl}/uploads/${normalizedImageName}?v=${Date.now()}`
-    : ""; // No fallback if imageName is empty
+    ? `${baseUrl}/uploads/${normalizedImageName}`
+    : "";
 
   // Remove all existing icon links
   const existingIcons = document.querySelectorAll(
@@ -20,7 +20,8 @@ export function setFaviconFromApi(imageName = "") {
   // Only add a new icon if imageName is provided
   if (normalizedImageName) {
     const link = document.createElement("link");
-    link.type = "image/x-icon";
+    const ext = normalizedImageName.split(".").pop()?.toLowerCase();
+    link.type = ext === "png" ? "image/png" : ext === "svg" ? "image/svg+xml" : "image/x-icon";
     link.rel = "icon";
     link.href = faviconUrl;
     document.head.appendChild(link);

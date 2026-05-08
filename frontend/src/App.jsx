@@ -244,7 +244,9 @@ function App() {
     }
   }, [colors]); // ✅ This effect will run only when colors change
 
-  setFaviconFromApi(GeneralInfoList?.Favicon); // Favicon
+  useEffect(() => {
+    setFaviconFromApi(GeneralInfoList?.Favicon);
+  }, [GeneralInfoList?.Favicon]);
 
   return (
     <Router>

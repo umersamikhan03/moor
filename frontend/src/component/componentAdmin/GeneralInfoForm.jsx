@@ -95,6 +95,13 @@ export default function GeneralInfoForm() {
     const result = await GeneralInfoUpdate(form, token);
 
     if (result.success) {
+      if (result.data) {
+        setFormData({
+          ...result.data,
+          PhoneNumber: result.data.PhoneNumber || [""],
+          CompanyEmail: result.data.CompanyEmail || [""],
+        });
+      }
       setSnackbarMessage("General information updated successfully!");
       setSnackbarSeverity("success");
     } else {
